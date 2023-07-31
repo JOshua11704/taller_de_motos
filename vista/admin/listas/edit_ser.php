@@ -88,6 +88,7 @@ if(isset($_GET["acualizar"])){
 
                     <input type="submit" class="btn btn-danger text-white w-60 mt-4 fw-semibold shadow-sm" name="acualizar" value="actualizar">
                     <input type="hidden" name="MM_update" value="actualizar">
+                </div>    
 
             </form>
 

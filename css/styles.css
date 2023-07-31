@@ -53,18 +53,21 @@
     margin-top: 5%;
     margin-right: 10%;
     width: 150px;
+    height: 150px;
+}
+
+.contenedor .encabezado_a3 :hover{
+    background:darkgray;
 }
 
 
 /*barra de navegación*/
 
 .contenedor .barra_nav {
-    background: #fe0101c4;
-    height: 150px;
+    background: #49948F;
+    height: 100px;
     width: 100%;
-    display: grid;
-    padding: 5px;
-    grid-template-columns: 58% 14% 14% 14%;
+
 }
 
 .contenedor .barra_nav a {
@@ -73,7 +76,6 @@
 }
 
 .menu_m1 {
-    grid-column: 1/2;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -102,9 +104,7 @@
     color: #000
 }
 
-.menu_m2 {
-    grid-column: 2/3;
-    display: flex;
+/* .menu_m2 {
     justify-content: center;
     align-items: center;
     text-decoration: none;
@@ -113,8 +113,7 @@
 }
 
 .menu_m3 {
-    grid-column: 3/4;
-    display: flex;
+
     justify-content: center;
     align-items: center;
     text-decoration: none;
@@ -123,23 +122,22 @@
 }
 
 .menu_m4 {
-    grid-column: 4/5;
-    display: flex;
+
     justify-content: center;
     align-items: center;
     text-decoration: none;
     font-weight: 1000;
     font-size: 20px;
-}
+} */
 
 
 /*-----CONTENIDO------*/
 
 .contenedor .conten {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 10px;
-    column-gap: 10px;
+    column-gap: 10px; */
     margin-top: 5%;
 }
 
@@ -147,77 +145,70 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 110px;
+    height: 160px;
     font-size: 50px;
-    grid-column: 1/5;
+    /* grid-column: 1/5; */
     border-radius: 50%;
-    margin-bottom: 2%;
+    /* margin-bottom: 2%; */
 }
 
 .conten img {
     height: 80%;
 }
 
+.conten a {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+}
+
 .contenido_n1 {
-    grid-column: 1/2;
-    background-color: #fe0101c4;
+    /* grid-column: 1/2; */
+    background-color: #49948F;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 140px;
-    width: 140px;
-    padding: 20px;
+    height: 150px;
+    width: 150px;
+    /* padding: 20px; */
     border-radius: 50%;
-    margin-left: 150px;
+    /* margin-left: 150px; */
 }
 
 .contenido_n2 {
-    grid-column: 2/3;
-    background-color: #fe0101c4;
+    /* grid-column: 2/3; */
+    background-color: #49948F;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 140px;
-    width: 140px;
-    padding: 20px;
+    height: 150px;
+    width: 150px;
+    /* padding: 20px; */
     border-radius: 50%;
-    margin-left: 150px;
+    /* margin-left: 150px; */
 }
 
 .contenido_n3 {
-    grid-column: 3/4;
-    background-color: #fe0101c4;
+    /* grid-column: 3/4; */
+    background-color: #49948F;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 140px;
     width: 140px;
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 50%;
-    margin-left: 150px;
+    /* margin-left: 150px; */
 }
 
-.contenido_n4 {
-    grid-column: 4/5;
-    background-color: #fe0101c4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 140px;
-    width: 140px;
-    padding: 20px;
-    border-radius: 50%;
-    margin-left: 150px;
-}
 
 
 /*----letras de los iconos----*/
 
 .opciones {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 10px;
-    margin-left: 30px;
+    /* /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /* column-gap: 10px; */
     height: 30px;
     text-decoration: none;
 }
@@ -229,35 +220,34 @@
 }
 
 .op_one {
-    grid-column: 1/2;
+    /* grid-column: 1/2; */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10%;
+
 }
 
 .op_two {
-    grid-column: 2/3;
+    /* grid-column: 2/3; */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10%;
+
 }
 
 .op_three {
-    grid-column: 3/4;
+    /* grid-column: 3/4; */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10%;
+
 }
 
 .op_four {
-    grid-column: 4/5;
+    /* grid-column: 4/5; */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 12%;
 }
 
 
@@ -343,15 +333,10 @@
 /* ------PIE DE PAGINA------ */
 
 .contenedor .pie {
-    display: grid;
     margin-top: 10%;
-    height: 180px;
+    height: 220px;
     background-color: #292828;
     color: antiquewhite;
     border: #000 solid 2px;
     padding: 1%;
-}
-
-.contenedor .pie {
-    display: flex;
 }

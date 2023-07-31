@@ -22,7 +22,7 @@
 
         if ($fila1) {
             echo '<script>alert("TIPO DE SERVICIO EXISTENTE");</script>';
-            echo '<script>windows.location="agregar.php"</script>';
+            echo '<script>windows.location="agregar_serv.php"</script>';
         }
         else if ($_GET['nombre'] == "" || $_GET['valor'] == "" || $_GET['descrip'] == ""  )
         {

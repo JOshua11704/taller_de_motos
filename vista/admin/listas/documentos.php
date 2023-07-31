@@ -1,18 +1,16 @@
 <?php
-session_start();
-require ("../../../controlador/conexion.php");
-include ("../../../controlador/validarsesion.php");
-$db = new Database();
-$con=$db->conectar();
+    session_start();
+    require ("../../../controlador/conexion.php");
+    include ("../../../controlador/validarsesion.php");
+    $db = new Database();
+    $con=$db->conectar();
 ?>
+
 
 <?php
-    $sql=$con->prepare("SELECT * FROM servicio ");
-    $sql->execute();
-
+   $sql=$con->prepare("SELECT * FROM documentos");
+   $sql->execute();
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +19,10 @@ $con=$db->conectar();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/tabla.css">
-    <link rel="icon" type="image/x-icon" href="../../../imagenes/moto.png"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
-    <title>Servicio</title>
+    <title>Documentos</title>
 </head>
 <body>
-
 
 <div class="contenedor">
     <header>
@@ -127,75 +123,56 @@ $con=$db->conectar();
     </div>
 </nav>
 
-<div class=" d-flex justify-content-center align-items-center ">
+
+
+
     <div class="main-container rounded-5 text-secondary" style="width: 70rem">
 
-        <H2 class="text-center text-dark fs-1 fw-bold" style="margin-right: 25%;"> SERVICIOS</H2>
+        <H2 class="text-center text-dark fs-1 fw-bold" style="margin-right: 25%;">Documentación</H2>
         <br>
         <br>
-        
-        <div class="row">
-            <div class="col-lg-6">
-                <form action="../libreria/formatoexel/exe_servi.php">
-                    <div ><button type="submit" class="btn btn-outline-dark m-1" >Descargar EXCEL</button></div> 
-                </form>
-               
-            </div>
-
-
-            
-
-
-            <br>
-        <br>
-        <div class="row">
-        <div class="col-lg-6">
-                <form action="../index.php">
-                    <div ><button type="submit" class="btn btn-dark m-1 shadow-sm" >VOLVER</button></div> 
-                </form>
-            </div>
-                
-            <div class="col-lg-6">
-                <form method="get" action="agregar_serv.php">
-                    <input type="hidden" name="agre" value="<?=$user["id_servicio"]?>">
-                    <button type="submit" class="btn btn-dark m-1 shadow-sm" name="actubo" >AGREGAR SERVICIO</button>
-                </form>
-            </div>
-            
+        <div>
+            <form method="get" action="agregar_docs.php">
+                <input type="hidden" name="agre" value="<?=$docs["id_servicio"]?>">
+                <button type="submit" class="btn btn-dark m-1 shadow-sm" name="actubo" >AGREGAR NUEVO</button>
+            </form>
+            <form action="../index.php">
+                <div ><button type="submit" class="btn btn-dark m-1 shadow-sm" >VOLVER</button></div> 
+            </form>
         </div>
-        <br>
+
         <br>
         <br>
         <table style="border:#000 solid 1px">
             <tr>
                 <thead>
-                    <th class="text-center">ID</th>
-                    <th class="text-center">Nombre de Servicio</th>
-                    <th class="text-center">Descripcion</th>
-                    <th class="text-center">Precio</th>
-                    <th class="text-center" colspan="2" style="text-align: center;">Act/Eli</th>
+                    <th class="text-align-center">ID</th>
+                    <th class="text-align-center">Nombre del Producto</th>
+                    <th class="text-align-center">Precio</th>
+                    <th class="text-align-center">Fecha</th>
+                    <th colspan="2" style="text-align: center;">Act/Eli</th>
                 </thead>
             </tr>
         
             <?php
-            foreach ($sql as $user){
+            foreach ($sql as $docs){
             ?>
             <tr>
                 <tbody>
-                    <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$user ["id_servicio"] ?></td>
-                    <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$user["servicio"]?></td>
-                    <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$user["descripcion"]?></td>
-                    <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$user["precio"]?></td>
-                    <td class="text-dark text-center" style="background-color: #DCD6D6;">
+                    <td class="text-align-center"><?=$docs ["id_documentos"] ?></td>
+                    <td class="text-align-center"><?=$docs["documentos"]?></td>
+                    <td class="text-align-center"><?=$docs["precio"]?></td>
+                    <td class="text-align-center"><?=$docs["fecha"]?></td>
+                    <td class="text-align-center">
                     
-                        <form method="get" action="eliminarserv.php">
-                            <input type="hidden" name="eli" value="<?=$user["id_servicio"]?>">
+                        <form method="get" action="eliminar_docs.php">
+                            <input type="hidden" name="eli_doc" value="<?=$docs["id_documentos"]?>">
                             <button type="submit" class="btn btn-dark text-white w-60 mt-4 fw-semibold shadow-sm"  onclick="return confirm ('¿Desea eliminar este producto?');">ELIMINAR</button>
                         </form>
                     </td>
-                    <td style="background-color: #DCD6D6;">
-                        <form method="get" action="edit_ser.php">
-                            <input type="hidden" name="actu" value="<?=$user["id_servicio"]?>">
+                    <td style="text-align: center;">
+                        <form method="get" action="edit_docs.php">
+                            <input type="hidden" name="id" value="<?=$docs["id_documentos"]?>">
                             <button type="submit" class="btn btn-dark text-white w-60 mt-4 fw-semibold shadow-sm"  name = "actubo" >ACTUALIZAR</button>
                         </form>
                     </td>
@@ -207,8 +184,8 @@ $con=$db->conectar();
 
         </table>
    
-    </div>    
+    </div>   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</div> 
 </body>
 </html>
