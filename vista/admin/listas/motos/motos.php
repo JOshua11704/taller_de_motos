@@ -198,15 +198,16 @@
                             
 
                             <td style="background-color: #DCD6D6">
-                                <form action= "./edit_usu.php" method="get">
-                                    <input type="hidden" name="update" value= "<?=$sq['documento']?>">
+                                <form action= "./edit_moto.php" method="get">
+                                    <input type="hidden" name="actu" value= "<?=$sq['placa']?>">
+                                    <input type="hidden" name="motor" value= "<?=$sq['numero_motor']?>">
                                     <button type= "submit" class="btn btn-dark text-white w-70 mt-4 fw-semibold shadow-sm">Editar</button>
                                 </form>
 
                             </td>
                             <td style="background-color: #DCD6D6">
-                                <form action= "./eliminar_usu.php" method="get">
-                                    <input type="hidden" name="eliminar" value= "<?=$sq['documento']?>">
+                                <form action= "./eliminar_mot.php" method="get">
+                                    <input type="hidden" name="eliminar" value= "<?=$sq['placa']?>">
                                     <button type="submit" class="btn btn-dark text-white w-70 mt-4 fw-semibold shadow-sm" onclick="return confirm ('¿Desea eliminar este usuario?');">Eliminar</button>
                                 </form>
                             </td>

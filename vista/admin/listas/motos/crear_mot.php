@@ -9,6 +9,10 @@
 
 <?php
 
+    $owner = $con->prepare("SELECT documento,nombre FROM usuario");
+    $owner -> execute();
+    $dueño= $owner -> fetch();
+
     $gasoline = $con->prepare("SELECT * FROM combustible");
     $gasoline -> execute();
     $gasolina= $gasoline -> fetch();
@@ -48,9 +52,52 @@
 
 <?php
 
-    $motos=$con->prepare("SELECT * FROM `moto` INNER JOIN marca INNER JOIN usuario INNER JOIN linea INNER JOIN modelo INNER JOIN cilindraje INNER JOIN color INNER JOIN tipo_vehiculo INNER JOIN tipo_carroceria INNER JOIN combustible ON moto.documento = usuario.documento WHERE moto.id_marca = marca.id_marca AND moto.id_linea = linea.id_linea AND moto.id_modelo = modelo.id_modelo AND moto.id_cilindraje = cilindraje.id_cilindraje AND moto.id_color = color.id_color AND moto.id_clase = tipo_vehiculo.id_clase AND moto.id_carroseria = tipo_carroceria.id_carroseria AND moto.id_combustible = combustible.id_combustible ORDER BY moto.placa ASC");
-    $motos->execute();
+    if((isset($_GET["MM_insert"]))&&($_GET["MM_insert"]=="formreg"))
+    {
+        $placa= $_GET['placa'];
+        $descripcion= $_GET['descrip'];
+        $kil= $_GET['kilm'];
+        $capcity= $_GET['capaciti'];
+        $motor= $_GET['motor'];
+        $vin= $_GET['vin'];
+        $chasis= $_GET['chasis'];
 
+        $mark= $_GET['marca'];
+        $document= $_GET['docu'];
+        $linea= $_GET['linea'];
+        $model= $_GET['modelo'];
+        $cilin= $_GET['cilindraje'];
+        $color= $_GET['color'];
+        $tip_veh= $_GET['tip_veh'];
+        $carroceria= $_GET['latas'];
+        $gaso= $_GET['gaso'];
+
+
+        // validar si la moto ya existe 
+
+        $num_mot= $con->prepare("SELECT * FROM moto WHERE placa = '$placa' or numero_motor = '$motor'");
+        $num_mot-> execute();
+        $motor_num= $num_mot-> fetch();
+    
+        if ($placa=="" || $descripcion=="" || $kil=="" || $capcity=="" || $motor=="" || $vin=="" || $chasis=="" || $mark=="" || $document=="" || $linea=="" || $model=="" || $cilin=="" || $color=="" || $tip_veh=="" || $carroceria=="" || $gaso=="")
+        {
+            echo '<script>alert("EXISTEN CAMPOS VACIOS");</script>';
+            echo '<script>window.location="crear_mot.php"</script>';
+        }
+        elseif ($motor_num){
+            echo '<script>alert("LA PLACA YA EXISTE //CAMBIELOS//");</script>';
+            echo '<script>windows.location="crear_mot.php"</script>';
+        }else
+        {
+            $registro = $con->prepare("INSERT INTO `moto` (`placa`, `id_marca`, `descripcion`, `documento`, `km`, `id_linea`, `id_modelo`, `id_cilindraje`, `id_color`, `id_clase`, `id_carroseria`, `capacidad`, `id_combustible`, `numero_motor`, `vin`, `numero_chasis`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    
+            $registro->execute([$placa, $mark, $descripcion, $document, $kil, $linea, $model, $cilin, $color, $tip_veh, $carroceria, $capcity, $gaso, $motor, $vin, $chasis]);
+
+            echo '<script>alert ("REGISTRO EXITOSO");</script>';
+            echo '<script>window.location="motos.php"</script>';
+        
+        }
+    }
     
 ?>
 
@@ -92,26 +139,26 @@
     
     
                 <label for="doc">Placa</label>
-                <input class="form-control bg-light" type="text" name="doc" id="Placa" placeholder="Digite la Placa"><br>
+                <input class="form-control bg-light" type="text" name="placa" id="Placa" required placeholder ="Digite la Placa"><br>
                 
                 <label for="docu">Descripción</label>
-                <input class="form-control bg-light" type="text" name="descrip" placeholder="Digite una Descripción"><br>
+                <input class="form-control bg-light" type="text" name="descrip" required placeholder="Digite una Descripción"><br>
 
                 <label for="docu">Kilometraje</label>
-                <input class="form-control bg-light" type="number" name="kilm" placeholder="Digite el Kilometraje"><br>
+                <input class="form-control bg-light" type="number" name="kilm" placeholder="Digite el Kilometraje" required><br>
 
                 <label for="docu">Motor</label>
-                <input class="form-control bg-light" type="text" name="motor" placeholder="Digite el Numero del motor"><br>
+                <input class="form-control bg-light" type="text" name="motor" placeholder="Digite el Numero del motor" required><br>
 
                 <label for="docu">Vin</label>
-                <input class="form-control bg-light" type="text" name="vin" placeholder="Digite el Vin"><br>
+                <input class="form-control bg-light" type="text" name="vin" placeholder="Digite el Vin" required><br>
 
                 <label for="docu">Chasis</label>
-                <input class="form-control bg-light" type="text" name="chasis" placeholder="Digite el Numero del Chasis">
+                <input class="form-control bg-light" type="text" name="chasis" placeholder="Digite el Numero del Chasis" required>
                 <br>
 
                 <label for="docu">Capacidad</label>
-                <input class="form-control bg-light" type="text" name="capaciti" placeholder="Digite la Capacidad">
+                <input class="form-control bg-light" type="number" name="capaciti" placeholder="Digite la Capacidad" required>
                 <br>
 
 
@@ -120,7 +167,7 @@
 
                                 <select class="form-control bg-light col-lg-4" name="marca" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem; height: 3rem;" required>
                                 
-                                        <option value="" class="text-center" selected disabled="">Marcas</option>
+                                        <option value="1" class="text-center" selected disabled="">Marcas</option>
                                         
                                         <?php
                                             do {
@@ -135,9 +182,9 @@
                                 </select>
 
                                     
-                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="predio">
+                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="docu">
 
-                                    <option value="" class="text-center" selected disabled>Propietario</option>
+                                    <option value="1" class="text-center" selected disabled>Propietario</option>
                                         <?php
                                             do {
 
@@ -149,9 +196,9 @@
                                 </select>
 
 
-                                <select class="form-control bg-light col-lg-4" name="destina" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
+                                <select class="form-control bg-light col-lg-4" name="linea" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
 
-                                    <option value="" class="text-center" selected disabled>Linea</option>
+                                    <option value="1" class="text-center" selected disabled>Linea</option>
                                         <?php
                                             do {
 
@@ -163,9 +210,9 @@
                                 </select>
                                 <br><br>
 
-                                <select class="form-control bg-light col-lg-4" name="marca" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem; height: 3rem;" required>
+                                <select class="form-control bg-light col-lg-4" name="modelo" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem; height: 3rem;" required>
                                 
-                                        <option value="" class="text-center" selected disabled="">Modelo</option>
+                                        <option value="1" class="text-center" selected disabled="">Modelo</option>
                                         
                                         <?php
                                             do {
@@ -180,9 +227,9 @@
                                 </select>
 
                                     
-                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="predio">
+                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="cilindraje">
 
-                                    <option value="" class="text-center" selected disabled>Cilindraje</option>
+                                    <option value="1" class="text-center" selected disabled>Cilindraje</option>
                                         <?php
                                             do {
 
@@ -194,9 +241,9 @@
                                 </select>
 
 
-                                <select class="form-control bg-light col-lg-4" name="destina" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
+                                <select class="form-control bg-light col-lg-4" name="color" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
 
-                                    <option value="" class="text-center" selected disabled>Color</option>
+                                    <option value="1" class="text-center" selected disabled>Color</option>
                                         <?php
                                             do {
 
@@ -207,9 +254,9 @@
                                     ?>
                                 </select>
 
-                                <select class="form-control bg-light col-lg-4" name="marca" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem; height: 3rem;" required>
+                                <select class="form-control bg-light col-lg-4" name="tip_veh" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem; height: 3rem;" required>
                                 
-                                        <option value="" class="text-center" selected disabled="">Tipo de Vehiculo</option>
+                                        <option value="1" class="text-center" selected disabled="">Tipo de Vehiculo</option>
                                         
                                         <?php
                                             do {
@@ -224,23 +271,23 @@
                                 </select>
 
                                     
-                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="predio">
+                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="latas">
 
-                                    <option value="" class="text-center" selected disabled>Propietario</option>
+                                    <option value="1" class="text-center" selected disabled>Carroceria</option>
                                         <?php
                                             do {
 
                                         ?>
-                                        <option value="<?php echo ($usuario ['id_carroceria'])?>"><?php echo($usuario ['carroceria'])?></option>
-                                    <?php
-                                        }while($carroceria= $bodywork -> fetch());
-                                    ?>
+                                        <option value="<?php echo ($carroceria ['id_carroseria'])?>"><?php echo($carroceria ['carroseria'])?></option>
+                                        <?php
+                                            }while($carroceria= $bodywork -> fetch());
+                                        ?>
                                 </select>
 
 
-                                <select class="form-control bg-light col-lg-4" name="destina" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
+                                <select class="form-control bg-light col-lg-4" name="gaso" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
 
-                                    <option value="" class="text-center" selected disabled>Combustible</option>
+                                    <option value="1" class="text-center" selected disabled>Combustible</option>
                                         <?php
                                             do {
 
@@ -253,7 +300,7 @@
                             </div> 
                     </div>
 
-                        <br><br><br><br><div class="col d-flex gap-1 justify-content-center "><input class="btn btn-danger text-white fw-semibold shadow-sm" style="width: 60%" type="submit" name="validar" value="REGISTRAR VEHICULO"></div>
+                        <br><br><br><br><div class="col d-flex gap-1 justify-content-center "><input class="btn text-white fw-semibold shadow-sm" style="width: 60%; background-color: #49948F;" type="submit" name="validar" value="REGISTRAR VEHICULO"></div>
 
                         <input type="hidden" name="MM_insert" value="formreg">
 
