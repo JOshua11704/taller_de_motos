@@ -62,9 +62,9 @@
     <title>CREAR SERVI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
 </head>
-<body class="bg-#C4C4C4 d-flex justify-content-center align-items-center vh-100" style="background-color: #C4C4C4;">
+<body class="bg-dark d-flex justify-content-center align-items-center vh-110" style="background-color: #C4C4C4;">
 
-    <div class="container-fluid bg-white p-5 rounded-5 text-secondary shadow" style="width: 40rem">
+    <div class="container-fluid bg-white p-5 rounded-5 text-secondary shadow" style="width: 40rem; margin-top: 10rem; margin-bottom: 5rem;">
 
 
         

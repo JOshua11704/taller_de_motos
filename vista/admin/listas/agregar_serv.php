@@ -50,7 +50,7 @@
     <title>CREAR SERVI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
 </head>
-<body class="bg-#C4C4C4 d-flex justify-content-center align-items-center vh-100" style="background-color: #C4C4C4;">
+<body class="bg-dark d-flex justify-content-center align-items-center vh-100" style="background-color: #C4C4C4;">
 
     <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 40rem">
 
@@ -62,13 +62,13 @@
             <div style="height: 5rem; margin-bottom: 2rem;"><h2 class="text-center text-dark fs-1 fw-bold"> CREAR SERVICIO </h2> </div>
                 
                 <label for="">Nombre del servicio</label>
-                <input type="text" class="form-control bg-light" name="nombre" placeholder=" Nombre del Servicio">
+                <input type="text" class="form-control bg-light" name="nombre" placeholder=" Nombre del Servicio"><br>
 
-                <label for="">precio</label>
-                <input type="number" class="form-control bg-light" name="valor" placeholder="Precio del Servicio">
+                <label for="">Precio</label>
+                <input type="number" class="form-control bg-light" name="valor" placeholder="Precio del Servicio"><br>
 
-                <label for="">descripcion</label>
-                <input type="text" class="form-control bg-light" name="descrip" placeholder="Descripcion del Servicio">
+                <label for="">Descripcion</label>
+                <input type="text" class="form-control bg-light" name="descrip" placeholder="Descripcion del Servicio"><br>
 
 
 
@@ -76,7 +76,7 @@
                     <a href="servicio.php" class="text-decoration-none text-dark fw-semibold fst-italic input-group-text">VOLVER</a>
 
                     <input type="hidden" name="agre" value="tipu">
-                    <button class="btn btn-danger text-white w-60 mt-4 fw-semibold shadow-sm"  type="submit">CREAR SERVICIO</button></td>
+                    <button class="btn btn-danger text-white w-60 mt-4 fw-semibold shadow-sm" style="border-radius: 7%;"  type="submit">CREAR SERVICIO</button></td>
                 </div>
 
 

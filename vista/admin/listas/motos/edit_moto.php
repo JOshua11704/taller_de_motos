@@ -130,7 +130,7 @@
         {
             $registro = $con->prepare("UPDATE moto SET id_marca=?, descripcion=?, documento=?, km=?, id_linea=?, id_modelo=?, id_cilindraje=?, id_color=?, id_clase=?, id_carroseria=?, capacidad=?, id_combustible=?, vin=?, numero_chasis=? WHERE placa=? AND moto.numero_motor=?");
     
-            $registro->execute([$mark, $descripcion, $document, $kil, $linea, $model, $cilin, $color, $tip_veh, $carroceria, $capcity, $gaso, $vin, $chasis]);
+            $registro->execute([$mark, $descripcion, $document, $kil, $linea, $model, $cilin, $color, $tip_veh, $carroceria, $capcity, $gaso, $vin, $chasis, $placa, $motor]);
 
             echo '<script>alert ("REGISTRO EXITOSO");</script>';
             echo '<script>window.location="motos.php"</script>';
@@ -157,20 +157,20 @@
     
 
     <link rel="icon" type="image/x-icon" href="../../../../imagenes/moto.png"/>
-    <title>Registro</title>
+    <title>Edición</title>
 </head>
 
-<body class="bg-dark d-flex justify-content-center align-items-center vh-100">
-    <div class=" bg-white p-5 rounded-5 text-secondary shadow" style="width: 45rem; margin-top: 80rem; ">
+<body class="bg-dark d-flex justify-content-center align-items-center vh-120">
+    <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 45rem; margin-top: 10rem; margin-bottom: 5rem;">
 
             
-        <form class="form1" method="GET" name="form1" id="form1" autocomplete="off"style="height: 95rem; margin-top: 10px;  margin-bottom: -5rem;">
+        <form class="form1" method="GET" name="form1" id="form1" autocomplete="off"style="height: 100rem; margin-top: 10px;  margin-bottom: -5rem;">
             <!--logo-->
             <div class="imagen d-flex justify-content-center ">
                 <img src="../../../../imagenes/motos.png" class="logo" style="height: 9rem; border-radius: 20%; margin-bottom: 2rem; " alt="Avatar Image">
             </div>
 
-            <h1 class="text-center text-dark fs-1 fw-bold">Registro De <br> Vehiculos</h1><br><br>
+            <h1 class="text-center text-dark fs-1 fw-bold">Edición De <br> Vehiculo</h1><br><br>
             <!--Inserta titulo-->
 
 
@@ -198,13 +198,17 @@
 
                 <label for="docu">Capacidad</label>
                 <input class="form-control bg-light" type="number" name="capaciti" placeholder="Digite la Capacidad" value="<?php echo $fila['capacidad'] ?>">
-                <br>
+                <br><br>
 
 
                 <div class="container">
                     <div class="row gap-1">    
+                                <label for="docu" class="text-center col-lg-4" style="width: 12rem">Marca</label>      
+                                <label for="docu" class="text-center col-lg-4" style="width: 12rem">Propietario</label>      
+                                <label for="docu" class="text-center col-lg-4"style="width: 12rem">Linea</label>      
 
-                                <select class="form-control bg-light col-lg-4" name="marca" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem; height: 3rem;">
+
+                                <select class="form-control bg-light col-lg-4" name="marca" style=" margin-bottom: 3rem; width: 12rem; height: 3rem;">
                                 
                                         <option value="<?php echo $fila['id_marca'] ?>" class="text-center" selected ><?php echo $actual_marca['marca'] ?></option>
                                         
@@ -221,7 +225,7 @@
                                 </select>
 
                                     
-                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="docu">
+                                <select class="form-control bg-light col-lg-4" style="margin-bottom: 3rem; width: 12rem;" name="docu">
 
                                     <option value="<?php echo $fila['documento'] ?>" class="text-center" selected ><?php echo $actual_usuario['nombre'] ?></option>
                                         <?php
@@ -235,7 +239,7 @@
                                 </select>
 
 
-                                <select class="form-control bg-light col-lg-4" name="linea" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
+                                <select class="form-control bg-light col-lg-4" name="linea" style=" margin-bottom: 3rem; width: 12rem;">
 
                                     <option value="<?php echo $fila['id_linea'] ?>" class="text-center" selected><?php echo $actual_linea['linea'] ?></option>
                                         <?php
@@ -249,7 +253,11 @@
                                 </select>
                                 <br><br>
 
-                                <select class="form-control bg-light col-lg-4" name="modelo" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem; height: 3rem;">
+                                <label for="docu" class="text-center col-lg-4" style="width: 12rem">Modelo</label>      
+                                <label for="docu" class="text-center col-lg-4" style="width: 12rem">Cilindraje</label>      
+                                <label for="docu" class="text-center col-lg-4"style="width: 12rem">Color</label>    
+
+                                <select class="form-control bg-light col-lg-4" name="modelo" style=" margin-bottom: 3rem; width: 12rem; height: 3rem;">
                                 
                                         <option value="<?php echo $fila['id_modelo'] ?>" class="text-center" selected ><?php echo $actual_modelo['modelo'] ?></option>
                                         
@@ -266,7 +274,7 @@
                                 </select>
 
                                     
-                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="cilindraje">
+                                <select class="form-control bg-light col-lg-4" style=" margin-bottom: 3rem; width: 12rem;" name="cilindraje">
 
                                     <option value="<?php echo $fila['id_cilindraje'] ?>" class="text-center" selected ><?php echo $actual_cilindraje['cilindraje'] ?></option>
                                         <?php
@@ -280,7 +288,7 @@
                                 </select>
 
 
-                                <select class="form-control bg-light col-lg-4" name="color" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
+                                <select class="form-control bg-light col-lg-4" name="color" style=" margin-bottom: 3rem; width: 12rem;">
 
                                     <option value="<?php echo $fila['id_color'] ?>" class="text-center" selected><?php echo $actual_color['color'] ?></option>
                                         <?php
@@ -293,7 +301,12 @@
                                     ?>
                                 </select>
 
-                                <select class="form-control bg-light col-lg-4" name="tip_veh" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem; height: 3rem;">
+
+                                <label for="docu" class="text-center col-lg-4" style="width: 12rem">Tipo Vehículo</label>      
+                                <label for="docu" class="text-center col-lg-4" style="width: 12rem">Carrocería</label>      
+                                <label for="docu" class="text-center col-lg-4"style="width: 12rem">Combustible</label>    
+
+                                <select class="form-control bg-light col-lg-4" name="tip_veh" style=" margin-bottom: 3rem; width: 12rem; height: 3rem;">
                                 
                                         <option value="<?php echo $fila['id_clase'] ?>" class="text-center" selected =""><?php echo $actual_clase['tip_vehiculo'] ?></option>
                                         
@@ -310,7 +323,7 @@
                                 </select>
 
                                     
-                                <select class="form-control bg-light col-lg-4" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;" name="latas">
+                                <select class="form-control bg-light col-lg-4" style=" margin-bottom: 3rem; width: 12rem;" name="latas">
 
                                     <option value="<?php echo $fila['id_carroseria'] ?>" class="text-center" selected ><?php echo $actual_carroseria['carroseria'] ?></option>
                                         <?php
@@ -324,7 +337,7 @@
                                 </select>
 
 
-                                <select class="form-control bg-light col-lg-4" name="gaso" style="margin-top: 2rem; margin-bottom: 1rem; width: 12rem;">
+                                <select class="form-control bg-light col-lg-4" name="gaso" style=" margin-bottom: 3rem; width: 12rem;">
 
                                     <option value="<?php echo $fila['id_combustible'] ?>" class="text-center" selected ><?php echo $actual_combustible['combustible'] ?></option>
                                         <?php

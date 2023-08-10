@@ -74,8 +74,8 @@ if((isset($_GET["actu"]))&&($_GET["escond"]=="ido")){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
     <title>Registro</title>
 </head>
-<body class=" bg-dark d-flex justify-content-center align-items-center vh-100">
-  <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 45rem">
+<body class=" bg-dark d-flex justify-content-center align-items-center vh-80">
+  <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 45rem; margin-top: 10rem; margin-bottom: 5rem;">
 
             
           <form class="form1" method="GET" name="form1" id="form1" autocomplete="off">
@@ -95,20 +95,22 @@ if((isset($_GET["actu"]))&&($_GET["escond"]=="ido")){
                 <input type="hidden" name="doc" id="doc" value="<?php echo $fila['documento'] ?>" placeholder="Digite Numero de Documento">
                 
                 <label for="docu"> Nombre </label>
-                <input class="form-control bg-light" type="text" name="nom" value="<?php echo $fila['nombre'] ?>" placeholder="Ingrese Nombre completo">
+                <input class="form-control bg-light" type="text" name="nom" value="<?php echo $fila['nombre'] ?>" placeholder="Ingrese Nombre completo"><br>
 
                 <label for="docu"> Usuario </label>
-                <input class="form-control bg-light" type="text" name="user" value="<?php echo $fila['usuario'] ?>" placeholder="Ingrese usuario">
+                <input class="form-control bg-light" type="text" name="user" value="<?php echo $fila['usuario'] ?>" placeholder="Ingrese usuario"><br>
 
 
                 <label for="docu"> Telefono </label>
-                <input class="form-control bg-light" type="number" name="tel" value="<?php echo $fila['telefono'] ?>" placeholder="Ingrese telefono">
+                <input class="form-control bg-light" type="number" name="tel" value="<?php echo $fila['telefono'] ?>" placeholder="Ingrese telefono"><br>
 
                 <label for="docu"> gmail </label>
-                <input class="form-control bg-light" type="email" name="gmail" value="<?php echo $fila['gmail'] ?>" placeholder="Ingrese correo">
+                <input class="form-control bg-light" type="email" name="gmail" value="<?php echo $fila['gmail'] ?>" placeholder="Ingrese correo"><br>
 
-            <select class="form-control bg-light" style="margin-top: 2rem; margin-bottom: 1rem; width: 20rem;" name="idusu">  
-                 <option value="">Tipo de Usuario</option>
+
+            <label for="docu">ROL</label>
+            <select class="form-control bg-light" style=" margin-bottom: 1rem; width: 20rem;" name="idusu">  
+                 <option class="text-center" value="<?php echo $fila['id_rol'] ?>"><?php echo $fila['nombre_rol'] ?></option>
                     <?php
                      do {
                      ?>
@@ -122,7 +124,7 @@ if((isset($_GET["actu"]))&&($_GET["escond"]=="ido")){
 
             <div class="d-flex gap-1 justify-content-center mt-1"><input class="btn btn-danger text-white mt-4 fw-semibold shadow-sm" style="width: 80%" type="submit" name="actu" value="ACTUALIZAR USUARIO"></div>
 
-
+            <br><br>
 
             <a href="usuarios.php" class="text-decoration-none text-dark fw-semibold fst-italic" style="font-size: 0.9rem;">VOLVER</a>
            

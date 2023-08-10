@@ -45,6 +45,8 @@ if(isset($_GET["acualizar"])){
         exit();
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,15 +70,18 @@ if(isset($_GET["acualizar"])){
                 <label for="actu">ID</label>
                 <!--solo mostramos como lectura el documento-->
                 <input type=text class="form-control bg-light" name="id" value="<?php echo $ractu['id_servicio'] ?>" readonly>
+                <br>
 
                 <!-- nombramos el compo del formulario como nombre-->
                 <label for="actu">Servicio</label>
                 <!-- recibimos informacion para cambiar el nombre-->
                 <input type=text class="form-control bg-light" name="ser" value="<?php echo $ractu['servicio']?>">
+                <br>
 
                 <label for="actu">Descripcion</label>
                 <!-- recibimos informacion para cambiar el nombre-->
                 <input type=text class="form-control bg-light" name="des" value="<?php echo $ractu['descripcion'] ?>">
+                <br>
 
                 <label for="actu">Precio</label>
                 <!-- recibimos informacion para cambiar el nombre-->
@@ -86,7 +91,7 @@ if(isset($_GET["acualizar"])){
 
                     <a href="servicio.php" class="text-decoration-none text-dark fw-semibold fst-italic input-group-text">Volver</a>
 
-                    <input type="submit" class="btn btn-danger text-white w-60 mt-4 fw-semibold shadow-sm" name="acualizar" value="actualizar">
+                    <input type="submit" class="btn btn-danger text-white w-60 mt-4 fw-semibold shadow-sm" name="acualizar" style="border-radius: 7%;" value="actualizar">
                     <input type="hidden" name="MM_update" value="actualizar">
                 </div>    
 

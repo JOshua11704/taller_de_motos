@@ -17,9 +17,16 @@
         $password= $_GET["contra"];
         
 
+            ///hacer consulta de documento - usuario - contraseña - estado (innactivo) para enviar email
+            
+            $email = $conectar -> prepare("SELECT * FROM usuario WHERE usuario = '$user' AND documento = '$docu' AND id_estado = 2");
+            $email -> execute();
+            $enviar = $email -> fetch();
+
+
+
 
             ///hacer consulta de documento - usuario - contraseña - estado. recibidos del index
-            
             
             $consultar = $conectar -> prepare("SELECT * FROM usuario WHERE usuario = '$user' AND documento = '$docu' AND id_estado = 1");
             $consultar -> execute();
@@ -73,7 +80,7 @@
             exit();
             }    
 
-        }else 
+            }else 
             {
                ///si el usuario y la clave son incorrectas lo lleva a la pagina
                 echo"<script> alert ('Los datos recibidos son erroneos o su usuario está bloqueado');</script>"; 

@@ -7,9 +7,10 @@
 ?>
 
 <?php
-    $sql=$con->prepare("SELECT * FROM `cilindraje`");
+    $sql=$con->prepare("SELECT * FROM `marca`");
     $sql->execute();
 ?>
+
 
 
 
@@ -26,7 +27,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
     <link href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    <title>Cilindrajes</title>
+    <title>Marcas</title>
 
 </head>
 <body>
@@ -50,9 +51,7 @@
         </div>    
     </header>
 
-
-
-
+    
 <!-- barra de navegacion -->
 <nav class="navbar navbar-expand-md">
     <div class="barra_nav container-fluid navbar-nav">
@@ -123,13 +122,10 @@
     </div>
 </nav>
 
-
-
-
-    <div class=" d-flex justify-content-center align-items-center ">
+<div class=" d-flex justify-content-center align-items-center ">
         <div class="main-container rounded-5 text-secondary" style="width: 70rem">
 
-            <h2 class="text-center text-dark fs-1 fw-bold" style="margin-right: 25%;">Listado de Cilindrajes</h2>
+            <h2 class="text-center text-dark fs-1 fw-bold" style="margin-right: 25%;">Listado de Marcas</h2>
             <br>
             <div class="row">
                 <div class="col-lg-6">
@@ -146,8 +142,8 @@
                     </form>
                 </div>    
                 <div class="col-lg-6">
-                    <form action="./crear_cilin.php">
-                            <button type="submit" class="btn btn-dark m-1 shadow-sm">CREAR</button>
+                    <form action="./crear_marca.php">
+                            <button type="submit" class="btn btn-dark m-1 shadow-sm">CREAR MARCA</button>
                     </form>
                 </div>
             </div>
@@ -157,7 +153,7 @@
                 <tr>
                     <thead>
                         <th class="text-center">ID</th>
-                        <th class="text-center">Cilindraje</th>
+                        <th class="text-center">marca</th>
 
                 
                         <!-- Accion editar - eliminar -->
@@ -173,20 +169,20 @@
                     ?>
                     
                         <tr>
-                            <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$sq['id_cilindraje']?></td>
+                            <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$sq['id_marca']?></td>
 
-                            <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$sq['cilindraje']?></td>
+                            <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$sq['marca']?></td>
 
                             <td style="background-color: #DCD6D6">
-                                <form action= "./edit_cilin.php" method="get">
-                                    <input type="hidden" name="actu" value= "<?=$sq['id_cilindraje']?>">
+                                <form action= "./edit_marca.php" method="get">
+                                    <input type="hidden" name="actu" value= "<?=$sq['id_marca']?>">
                                     <button type= "submit" class="btn btn-dark text-white w-70 mt-4 fw-semibold shadow-sm">Editar</button>
                                 </form>
 
                             </td>
                             <td style="background-color: #DCD6D6">
-                                <form action= "./eliminar_cil.php" method="get">
-                                    <input type="hidden" name="borrar" value= "<?=$sq['id_cilindraje']?>">
+                                <form action= "./eliminar_marca.php" method="get">
+                                    <input type="hidden" name="borrar" value= "<?=$sq['id_marca']?>">
                                     <button type="submit" class="btn btn-dark text-white w-70 mt-4 fw-semibold shadow-sm" onclick="return confirm ('¿Desea eliminar este ID?');">Eliminar</button>
                                 </form>
                             </td>

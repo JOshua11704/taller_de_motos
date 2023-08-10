@@ -7,7 +7,7 @@
 ?>
 
 <?php
-    $sql=$con->prepare("SELECT * FROM `cilindraje`");
+    $sql=$con->prepare("SELECT * FROM `tipo_carroceria`");
     $sql->execute();
 ?>
 
@@ -26,7 +26,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
     <link href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    <title>Cilindrajes</title>
+    <title>Tipos de Carroserías</title>
 
 </head>
 <body>
@@ -42,14 +42,10 @@
                 <h1>TALLER <br>DE MOTOS</h1>
             </div>
             
-            <!-- <div class="encabezado_a3">
-                <img src="../../../../imagenes/useredit.png" alt="perfil">
-                <h4>Mi Perfil</h4>
-            </div> -->
+            
 
         </div>    
     </header>
-
 
 
 
@@ -125,11 +121,10 @@
 
 
 
-
     <div class=" d-flex justify-content-center align-items-center ">
         <div class="main-container rounded-5 text-secondary" style="width: 70rem">
 
-            <h2 class="text-center text-dark fs-1 fw-bold" style="margin-right: 25%;">Listado de Cilindrajes</h2>
+            <h2 class="text-center text-dark fs-1 fw-bold" style="margin-right: 25%;">Tipos de Carrocerías</h2>
             <br>
             <div class="row">
                 <div class="col-lg-6">
@@ -141,13 +136,13 @@
             <br><br><br>
             <div class="row">
                 <div class="col-lg-6">
-                    <form action="../index.php">
+                    <form action="../../index.php">
                         <button type="submit"  class="btn btn-dark m-1 shadow-sm" >VOLVER</button>
                     </form>
                 </div>    
                 <div class="col-lg-6">
-                    <form action="./crear_cilin.php">
-                            <button type="submit" class="btn btn-dark m-1 shadow-sm">CREAR</button>
+                    <form action="./crear_tip_carrose.php">
+                            <button type="submit" class="btn btn-dark m-1 shadow-sm">CREAR TIPO</button>
                     </form>
                 </div>
             </div>
@@ -157,11 +152,11 @@
                 <tr>
                     <thead>
                         <th class="text-center">ID</th>
-                        <th class="text-center">Cilindraje</th>
+                        <th class="text-center">TIPO</th>
 
                 
                         <!-- Accion editar - eliminar -->
-                        <th colspan= "2" style="text-align: center;"> Accion</th>
+                        <th colspan= "2" style="text-align: center;">Accion</th>
                     </thead>
                 </tr>
 
@@ -173,20 +168,20 @@
                     ?>
                     
                         <tr>
-                            <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$sq['id_cilindraje']?></td>
+                            <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$sq['id_carroseria']?></td>
 
-                            <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$sq['cilindraje']?></td>
+                            <td class="text-dark text-center" style="background-color: #DCD6D6;"><?=$sq['carroseria']?></td>
 
                             <td style="background-color: #DCD6D6">
-                                <form action= "./edit_cilin.php" method="get">
-                                    <input type="hidden" name="actu" value= "<?=$sq['id_cilindraje']?>">
+                                <form action= "./edit_tip_carrose.php" method="get">
+                                    <input type="hidden" name="actu" value= "<?=$sq['id_carroseria']?>">
                                     <button type= "submit" class="btn btn-dark text-white w-70 mt-4 fw-semibold shadow-sm">Editar</button>
                                 </form>
 
                             </td>
                             <td style="background-color: #DCD6D6">
-                                <form action= "./eliminar_cil.php" method="get">
-                                    <input type="hidden" name="borrar" value= "<?=$sq['id_cilindraje']?>">
+                                <form action= "./eliminar_tip_carrose.php" method="get">
+                                    <input type="hidden" name="borrar" value= "<?=$sq['id_carroseria']?>">
                                     <button type="submit" class="btn btn-dark text-white w-70 mt-4 fw-semibold shadow-sm" onclick="return confirm ('¿Desea eliminar este ID?');">Eliminar</button>
                                 </form>
                             </td>

@@ -65,9 +65,9 @@
 
     <title>Registro</title>
 </head>
-<body class=" bg-dark d-flex justify-content-center align-items-center vh-100">
+<body class=" bg-dark d-flex justify-content-center align-items-center vh-120">
 
-    <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 40rem">
+    <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 40rem; margin-top: 8rem; margin-bottom: 5rem;">
 
 
             <form class="form1" method="GET" name="form1" id="form1" autocomplete="off">

@@ -122,7 +122,7 @@
 </head>
 
 <body class="bg-dark d-flex justify-content-center align-items-center vh-100">
-    <div class=" bg-white p-5 rounded-5 text-secondary shadow" style="width: 45rem; margin-top: 80rem; ">
+    <div class=" bg-white p-5 rounded-5 text-secondary shadow" style="width: 45rem; margin-top: 65rem; ">
 
             
         <form class="form1" method="GET" name="form1" id="form1" autocomplete="off"style="height: 95rem; margin-top: 10px;  margin-bottom: -5rem;">
